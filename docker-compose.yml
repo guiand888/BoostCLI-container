@@ -14,8 +14,8 @@ services:
     ports:
       - "${HOST_SSH_PORT}:22"
     volumes:
-      - /your/macaroon/file/admin.macaroon:/lnd/admin.macaroon:ro
-      - /your/tls/cert/tls.cert:/lnd/tls.cert:ro
+      - "${MACAROON}:/lnd/admin.macaroon:ro"
+      - "${TLSCERT}:/lnd/tls.cert:ro"
       - ./userdata:/home/${MY_USER}
     deploy:
       resources:
