@@ -1,6 +1,6 @@
 # BoostCLI Docker Container
 
-This project is a Docker container configuration for running [BoostCLI](https://github.com/valcanobacon/BoostCLI), a Python CLI program to send Boosts oer Lightning. This container also includes a secure SSH server for remote access. The project uses Docker for containerization, and instructions for Podman are also included. 
+This project is a Docker container configuration for running [BoostCLI](https://github.com/valcanobacon/BoostCLI), a Python CLI program to send Boosts oer Lightning. This container also includes a secure SSH server for remote access. The project uses Docker for containerization. 
 
 Thanks to [BoostCLI](https://github.com/valcanobacon/BoostCLI) by [valcanobacon](https://github.com/valcanobacon) for creating such a helpful tool!
 
@@ -23,33 +23,20 @@ Next, copy your SSH public key to the `config.env` file and set the other variab
 You also need to set the path for your lnd cert and macaroon. IF using Umbrel, this should be under:
 ```
 app-data/lightning/data/lnd/tls.cert
-app-data/lightning/data/lnd/data/chain/bitcoin/mainnet/admin.macaroon
+app-data/lightning/data/lnd/data/chain/bitcoin/mainnet/readonly.macaroon
 ```
 
-For Docker users, run the build script:
+Run the build script:
 
 ```sh
 chmod +x build-docker.sh
 ./build.sh
 ```
 
-Or for Podman users, run the podman build script:
+You can then run the container using `docker compose`:
 
 ```sh
-chmod +x build-podman.sh
-./build-podman.sh
-```
-
-You can then run the container using `docker-compose` or `podman-compose`:
-
-```sh
-docker-compose up --build
-```
-
-or
-
-```sh
-podman-compose up --build
+docker compose up --build
 ```
 
 To run the BoostCLI command directly from the client, you can SSH into the container using the following command:
