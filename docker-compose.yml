@@ -6,9 +6,9 @@ services:
     build: 
       context: .
       args:
-        USER: ${USER}
-        UID: ${UID}
-        GID: ${GID}
+        USER: ${MY_USER}
+        UID: ${USER_ID}
+        GID: ${GROUP_ID}
         SSH_PUBLIC_KEY: ${SSH_PUBLIC_KEY}
     image: boostcli-container
     ports:
@@ -16,7 +16,7 @@ services:
     volumes:
       - /your/macaroon/file/admin.macaroon:/lnd/admin.macaroon:ro
       - /your/tls/cert/tls.cert:/lnd/tls.cert:ro
-      - ./userdata:/home/${USER}
+      - ./userdata:/home/${MY_USER}
     deploy:
       resources:
         limits:

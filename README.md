@@ -16,7 +16,7 @@ First, clone this repository:
 
 ```sh
 git clone https://github.com/guiand888/BoostCLI-container
-BoostCLI-container
+cd BoostCLI-container
 ```
 
 Next, copy your SSH public key to the `config.env` file and set the other variables as necessary.
@@ -24,7 +24,7 @@ Next, copy your SSH public key to the `config.env` file and set the other variab
 For Docker users, run the build script:
 
 ```sh
-chmod +x build.sh
+chmod +x build-docker.sh
 ./build.sh
 ```
 

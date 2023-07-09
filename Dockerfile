@@ -15,22 +15,22 @@ RUN echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
 RUN echo 'PubkeyAuthentication yes' >> /etc/ssh/sshd_config
 
 # User, UID and GID are passed as build arguments
-ARG USER
-ARG UID
-ARG GID
+ARG MY_USER
+ARG USER_ID
+ARG GROUP_ID
 
 # Create user
-RUN groupadd -g ${GID} ${USER}
-RUN useradd -m -s /bin/bash -u ${UID} -g ${GID} ${USER}
-RUN usermod -aG sudo ${USER}
+RUN groupadd -g ${GROUP_ID} ${MY_USER}
+RUN useradd -m -s /bin/bash -u ${USER_ID} -g ${GROUP_ID} ${MY_USER}
+#RUN usermod -aG sudo ${MY_USER}
 
 # Add public key (passed as a build argument)
 ARG SSH_PUBLIC_KEY
-RUN mkdir -p /home/${USER}/.ssh
-RUN echo "${SSH_PUBLIC_KEY}" >> /home/${USER}/.ssh/authorized_keys
-RUN chown -R ${USER}:${USER} /home/${USER}/.ssh
-RUN chmod 700 /home/${USER}/.ssh
-RUN chmod 600 /home/${USER}/.ssh/authorized_keys
+RUN mkdir -p /home/${MY_USER}/.ssh
+RUN echo "${SSH_PUBLIC_KEY}" >> /home/${MY_USER}/.ssh/authorized_keys
+RUN chown -R ${MY_USER}:${MY_USER} /home/${MY_USER}/.ssh
+RUN chmod 700 /home/${MY_USER}/.ssh
+RUN chmod 600 /home/${MY_USER}/.ssh/authorized_keys
 
 # Update pip
 RUN pip install --upgrade pip
