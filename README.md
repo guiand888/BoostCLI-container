@@ -20,6 +20,11 @@ cd BoostCLI-container
 ```
 
 Next, copy your SSH public key to the `config.env` file and set the other variables as necessary.
+You also need to set the path for your lnd cert and macaroon. IF using Umbrel, this should be under:
+```
+app-data/lightning/data/lnd/tls.cert
+app-data/lightning/data/lnd/data/chain/bitcoin/mainnet/admin.macaroon
+```
 
 For Docker users, run the build script:
 
